@@ -1,0 +1,1088 @@
+/* ==========================================================================
+   1. VARIABLES & CONFIGURATION GENERALE
+   ========================================================================== */
+
+:root {
+    --color-dark-teal: #0c4353;      
+    --color-medium-teal: #1a6275;    
+    --color-accent-teal: #1cb5d2;    
+    --color-accent-green: #12d992;   
+    --color-white: #ffffff;
+    --color-off-white: #f4f8f9;      
+    --color-black: #1a1a1a;
+    --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    color: var(--color-black);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.alt-bg {
+    background-color: var(--color-off-white);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--color-dark-teal);
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-medium-teal);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px auto;
+}
+
+.accent-text {
+    color: var(--color-accent-green);
+}
+
+/* --- BOUTONS --- */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-accent-green);
+    color: var(--color-dark-teal);
+    box-shadow: 0 8px 20px rgba(18, 217, 146, 0.25);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(18, 217, 146, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-dark-teal);
+    border: 2px solid var(--color-dark-teal);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-dark-teal);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* Règle spécifique pour rendre les boutons des services plus petits */
+.btn-small {
+    padding: 10px 22px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION
+   ========================================================================== */
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION (VERSION PREMIUM INTERACTIVE)
+   ========================================================================== */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Effet "Glassmorphism" : fond blanc translucide + flou haut de gamme arrière-plan */
+    background-color: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    /* Ligne fine en bas pour structurer et séparer du reste du site */
+    border-bottom: 1px solid rgba(12, 67, 83, 0.06);
+    padding: 16px 0;
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Zone Logo & Marque */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none; /* Sécurité si vous mettez un lien */
+}
+
+#site-logo {
+    height: 38px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-area:hover #site-logo {
+    transform: rotate(-5deg) scale(1.05); /* Petit effet ludique au survol */
+}
+
+.brand-text {
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--color-dark-teal);
+    letter-spacing: 1px;
+}
+
+/* Liens de Navigation */
+.main-navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 35px; /* Légèrement plus espacé */
+    list-style: none;
+}
+
+.main-navigation a:not(.nav-cta) {
+    text-decoration: none;
+    color: var(--color-medium-teal);
+    font-weight: 600; /* Texte un peu plus épais pour le contraste */
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+}
+
+.main-navigation a:not(.nav-cta):hover {
+    color: var(--color-dark-teal);
+}
+
+/* Barre de soulignement animée au survol (évite le côté brut) */
+.main-navigation a:not(.nav-cta)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent-teal);
+    transition: width 0.3s ease;
+}
+
+.main-navigation a:not(.nav-cta):hover::after {
+    width: 100%;
+}
+
+/* Le bouton d'action (CTA) dans le menu */
+.main-navigation .nav-cta {
+    background-color: var(--color-dark-teal);
+    color: var(--color-white) !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(12, 67, 83, 0.15);
+    transition: all 0.3s ease;
+}
+
+.main-navigation .nav-cta:hover {
+    background-color: var(--color-accent-green);
+    color: var(--color-dark-teal) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(18, 217, 146, 0.3);
+}
+/* ==========================================================================
+   3. SECTION HERO (VERSION IMMERSIVE)
+   ========================================================================== */
+/* ==========================================================================
+   3. SECTION HERO (VERSION REDIMENSIONNABLE ET TEXTE PRO)
+   ========================================================================== */
+
+/* ==========================================================================
+   SECTION HERO : FULL WIDTH & IMAGE
+   ========================================================================== */
+
+/* ==========================================================================
+   SECTION HERO : FULL WIDTH & OMBRE DYNAMIQUE
+   ========================================================================== */
+/* ==========================================================================
+   SECTION HERO : IMAGE NATURELLE + HALO LOCALISÉ DIEDRE LE TEXTE
+   ========================================================================== */
+
+/* ==========================================================================
+   SECTION HERO : IMAGE NATURELLE + HALO RADIAL FLUIDE
+   ========================================================================== */
+
+.hero-full-width {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url('images/votre-image-boulangerie.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* LE HALO FLUIDE (Pas de carré, pas de lignes droites) */
+.hero-full-width::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* On crée un cercle blanc flou (radial-gradient) centré au niveau du texte (at 25% 50%).
+       Il est très blanc au milieu du texte, puis s'estompe en douceur vers le transparent.
+    */
+    background: radial-gradient(circle at 25% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 25%, rgba(255, 255, 255, 0) 55%);
+    z-index: 1;
+}
+
+/* Conteneur du texte (Plus aucun fond, juste du texte pur) */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 650px;
+    margin-left: 8%;
+    text-align: left;
+    background: none; /* On supprime le bloc carré précédent */
+    padding: 0;       /* On enlève les marges internes du bloc */
+}
+
+/* Typographie du Titre (On repasse sur ton bleu sarcelle d'origine) */
+.hero-content h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    color: #0c4353; 
+    line-height: 1.05;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+/* Le mot en Vert */
+.hero-content .highlight {
+    color: #12d992; /* Ton vert lime d'origine qui claque */
+}
+
+/* Sous-titre */
+.hero-content p {
+    font-size: 1.3rem;
+    color: #333333; /* Un gris très foncé et élégant */
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Bouton avec double halo (Inchangé, il est parfait) */
+.btn-hero {
+    display: inline-block;
+    background-color: #0c4353;
+    color: #ffffff;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(12, 67, 83, 0.3),   
+                0 10px 20px rgba(18, 217, 146, 0.3); 
+}
+
+.btn-hero:hover {
+    background-color: #12d992;
+    color: #0c4353;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(12, 67, 83, 0.4),
+                0 15px 30px rgba(18, 217, 146, 0.4);
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+    .hero-content {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-full-width::before {
+        /* Sur mobile, on englobe tout pour la lisibilité */
+        background: rgba(255, 255, 255, 0.85);
+    }
+}
+/* =========================================================
+   LE BOUTON AVEC L'EFFET DE HALO
+   ========================================================= */
+.btn-hero {
+    display: inline-block;
+    background-color: #0c4353;
+    color: #ffffff;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    /* La double ombre pour créer le halo de l'image */
+    box-shadow: 0 4px 8px rgba(12, 67, 83, 0.3),   /* Ombre de base sombre */
+                0 10px 20px rgba(18, 217, 146, 0.3); /* Halo vert diffus */
+}
+
+/* Effet d'élévation et de halo intensifié au survol */
+.btn-hero:hover {
+    background-color: #12d992;
+    color: #0c4353;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(12, 67, 83, 0.4),
+                0 15px 30px rgba(18, 217, 146, 0.4);
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+    .hero-content {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* ==========================================================================
+   4. SECTION CHIFFRES CLÉS
+   ========================================================================== */
+
+/* ==========================================================================
+   SECTION LE SAVIEZ-VOUS (DYNAMIQUE & AÉRÉE)
+   ========================================================================== */
+
+.did-you-know {
+    /* ÉLOIGNEMENT : On pousse la section vers le bas pour laisser respirer le Hero */
+    padding: 100px 0; 
+    background-color: #f8fafb; /* Un fond gris/bleu très léger pour changer du blanc */
+}
+
+.dyk-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Espace entre l'icône et le texte */
+    
+    /* Style de la boîte globale */
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(12, 67, 83, 0.05);
+    
+    /* Animation fluide pour casser le côté statique */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Effet interactif discret au survol */
+.dyk-container:hover {
+    transform: translateY(-5px); /* La carte s'élève légèrement */
+    box-shadow: 0 15px 40px rgba(12, 67, 83, 0.1); /* L'ombre s'adoucit */
+}
+
+/* Style du badge à gauche */
+.dyk-badge-box {
+    flex: 0 0 200px; /* Largeur fixe pour la partie gauche */
+    text-align: center;
+}
+
+.dyk-tag {
+    display: inline-block;
+    background-color: rgba(18, 217, 146, 0.15); /* Ton vert lime très transparent */
+    color: #0a8a5d; /* Vert lisible */
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.dyk-icon {
+    font-size: 3.5rem;
+    /* Petite animation de pulsation continue sur l'icône */
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Style du texte à droite */
+.dyk-text-box {
+    flex: 1; /* Prend tout l'espace restant */
+}
+
+.dyk-text-box h2 {
+    font-size: 1.8rem;
+    color: #0c4353; /* Ton bleu sarcelle */
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.dyk-text-box p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* KEYFRAMES : L'animation de l'icône pour donner du mouvement */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .did-you-know {
+        padding: 60px 0; /* Moins d'espace sur mobile */
+    }
+    .dyk-container {
+        flex-direction: column; /* On aligne verticalement sur mobile */
+        text-align: center;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    .dyk-badge-box {
+        flex: none;
+    }
+}
+
+/* ==========================================================================
+   5. SECTION SERVICES & TARIFS DOUX
+   ========================================================================== */
+
+/* ==========================================================================
+   5. SECTION SERVICES & TARIFS DOUX (VERSION CARTES PREMIUM)
+   ========================================================================== */
+
+.services-detailed {
+    /* Un fond très légèrement bleuté/gris pour casser le blanc */
+    background-color: var(--color-off-white); 
+}
+
+.service-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 50px;
+    background-color: var(--color-white); /* Les cartes restent blanches pour ressortir */
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(12, 67, 83, 0.03); /* Ombre très douce */
+    border: 1px solid rgba(12, 67, 83, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(12, 67, 83, 0.08);
+    border-color: rgba(28, 181, 210, 0.2); /* Légère lueur au survol */
+}
+
+.service-row:last-child {
+    margin-bottom: 0;
+}
+
+.service-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.service-image-col {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 300px; /* Hauteur fixe pour harmoniser */
+}
+
+.service-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-row:hover .service-photo {
+    transform: scale(1.05);
+}
+
+.service-text-col {
+    flex: 1;
+    position: relative;
+}
+
+.service-number {
+    position: absolute;
+    top: -50px;
+    left: -10px;
+    font-size: 7rem;
+    font-weight: 800;
+    color: rgba(28, 181, 210, 0.06); /* Numéro en arrière-plan discret */
+    z-index: 0;
+}
+
+.service-text-col h3 {
+    font-size: 1.8rem;
+    color: var(--color-dark-teal);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.service-price-soft {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-dark-teal);
+    background-color: rgba(18, 217, 146, 0.15); /* Badge de prix plus visible (Vert Lime transparent) */
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.service-benefits {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.service-benefits li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.service-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-green);
+    font-weight: bold;
+}
+
+.about-text p {
+    color: var(--color-medium-teal);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.my-profile-pic {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(12, 67, 83, 0.15);
+    border: 4px solid var(--color-white);
+}
+
+/* ==========================================================================
+   SECTION PRÉSENTATION (EFFET FLOTTANT & ATTRAYANT)
+   ========================================================================== */
+
+/* ==========================================================================
+   SECTION QUI SUIS-JE (PORTRAIT FLUIDE & DESIGN)
+   ========================================================================== */
+
+.about-me-section {
+    padding: 100px 0;
+    background-color: #ffffff; /* Fond neutre */
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+/* --- Le Texte --- */
+.about-text {
+    flex: 1.2; /* Donne un peu plus d'espace au texte */
+}
+
+.about-hi {
+    color: #12d992; /* Ton vert lime */
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.about-text h2 {
+    font-size: 2.8rem;
+    color: #0c4353; /* Ton bleu sarcelle */
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.about-text .lead {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0c4353;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* --- Le Portrait (Cercle fluide et moderne) --- */
+.about-profile {
+    flex: 0.8;
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    box-shadow: 0 15px 35px rgba(12, 67, 83, 0.15);
+    border: 6px solid #ffffff;
+    z-index: 2;
+    
+    /* On charge TA photo brute en fond, sans dégradé dessus pour l'instant */
+    background-image: url('images/ma-photo.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* On crée le reflet grâce à un élément virtuel (::after) pour ne pas toucher à la photo */
+.about-profile::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    
+    /* Un dégradé linéaire en diagonale imite parfaitement un reflet de vitre moderne */
+    background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.4) 0%, 
+                rgba(255, 255, 255, 0.1) 40%, 
+                rgba(255, 255, 255, 0) 60%);
+                
+    /* LE SECRET DU REFLET PROFESSIONNEL :
+       overlay fusionne la lumière blanche avec les couleurs de ta photo sans faire d'effet "lavé" ou "voile blanc". */
+    mix-blend-mode: overlay; 
+    
+    pointer-events: none; /* Laisse la souris interagir avec le bouton ou le fond */
+}
+/* ==========================================================================
+   7. SECTION FAQ
+   ========================================================================== */
+/* ==========================================================================
+   7. SECTION FAQ (VERSION SUBSTANTIELLE)
+   ========================================================================== */
+
+.faq {
+    /* Un dégradé très discret qui part du blanc vers un bleu/sarcelle ultra-léger */
+    background: linear-gradient(to bottom, var(--color-white), rgba(28, 181, 210, 0.04));
+}
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background-color: var(--color-white);
+    border: 1px solid rgba(12, 67, 83, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(12, 67, 83, 0.02);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--color-accent-teal);
+    box-shadow: 0 10px 25px rgba(12, 67, 83, 0.06);
+    transform: translateY(-2px);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 28px;
+    text-align: left;
+    font-family: var(--font-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-dark-teal);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--color-accent-teal);
+    transition: transform 0.3s ease;
+}
+
+/* Style quand la question est ouverte */
+.faq-item.active {
+    border-color: var(--color-accent-green);
+    box-shadow: 0 10px 30px rgba(18, 217, 146, 0.1);
+}
+
+.faq-item.active .faq-question {
+    background-color: rgba(244, 248, 249, 0.5); /* Grise légèrement l'en-tête ouverte */
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(45deg);
+    color: var(--color-accent-green);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-answer p {
+    padding: 24px 28px;
+    color: var(--color-medium-teal);
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: var(--color-white);
+    border-top: 1px solid rgba(12, 67, 83, 0.03);
+}
+
+/* ==========================================================================
+   8. CONTACT & FOOTER
+   ========================================================================== */
+
+.contact-form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--color-white);
+    padding: 40px;
+    border-radius: 24px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid rgba(12, 67, 83, 0.1);
+    border-radius: 12px;
+    background-color: var(--color-off-white);
+}
+
+.site-footer {
+    background-color: var(--color-dark-teal);
+    color: var(--color-white);
+    padding: 40px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ==========================================================================
+   9. ANIMATIONS & RESPONSIVE
+   ========================================================================== */
+
+@keyframes flottaison {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes rotation {
+    100% { transform: rotate(360deg); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ==========================================================================
+   STRUCTURE DE LA SECTION À PROPOS (AFFICHAGE ORDINATEUR)
+   ========================================================================== */
+
+/* Aligne le texte à gauche et la photo à droite sur grand écran */
+/* ==========================================================================
+   VERSION NETTE ET ÉPURÉE DE LA SECTION À PROPOS (ORDINATEUR)
+   ========================================================================== */
+
+/* ==========================================================================
+   RETOUR AU STYLE D'ORIGINE (AVEC POINTILLÉS) - TAILLE AJUSTÉE PC
+   ========================================================================== */
+
+/* On garde ta structure de base qui était jolie */
+/* ==========================================================================
+   RETOUR AU STYLE D'ORIGINE AMÉLIE : CADRE POINTILLÉ ET TAILLE ORDINATEUR
+   ========================================================================== */
+.about-profile img.responsive-avatar {
+    width: 100%;
+    max-width: 350px; 
+    height: auto;
+    border: none;      /* On enlève TOUTE bordure qui pourrait faire un effet de cadre */
+    padding: 0;        /* On enlève l'espace interne */
+    background: none;  /* Zéro fond CSS */
+}
+@media (max-width: 992px) {
+    .hero-grid-layout { grid-template-columns: 1fr; text-align: center; }
+    .hero-btns { justify-content: center; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .service-row, .service-row.reverse { flex-direction: column; }
+}
+
+@media (max-width: 768px) {
+    .header-container, .footer-container { flex-direction: column; gap: 20px; }
+    .about-content-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    /* ==========================================================================
+   DESIGN MOBILE SUR-MESURE (MA COM LOCALE)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* --- 1. SÉCURITÉ POUR LA PHOTO "QUI SUIS-JE" --- */
+    /* On annule les déformations de tout à l'heure */
+  /* ✅ CE BLOC CIBLE UNIQUEMENT TON PORTRAIT SANS TOUCHER AU RESTE */
+img.responsive-avatar {
+    width: 250px !important;      
+    height: 250px !important;     
+    object-fit: cover !important; 
+    border-radius: 50% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+    /* --- 2. RÉPARATION DU MENU ET DE L'EN-TÊTE --- */
+    .header-container {
+        flex-direction: column !important; /* Aligne le logo et le menu l'un sous l'autre */
+        align-items: center !important;
+        padding: 15px !important;
+        gap: 15px;
+    }
+
+    .main-navigation {
+        width: 100% !important;
+        display: block !important;
+    }
+
+    /* On force la liste des liens à s'aligner proprement sans déborder */
+ /* 1. Par défaut sur mobile, on cache le menu hors de l'écran */
+    .main-navigation ul {
+        display: none !important; /* Cache le menu */
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 20px 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+        text-align: center !important;
+        gap: 10px;
+        background-color: var(--color-white); /* Évite de voir le site à travers */
+    }
+
+    /* 2. Quand le menu a la classe "active", on l'affiche d'un coup ! */
+    .main-navigation ul.active {
+        display: flex !important; /* Déploie le menu */
+    }
+
+    .main-navigation li {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .main-navigation a {
+        display: block !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Le bouton contact en bas du menu */
+    .main-navigation a.nav-cta {
+        display: inline-block !important;
+        width: auto !important;
+        padding: 10px 25px !important;
+        margin-top: 5px;
+    }
+
+    /* --- 3. SÉCURITÉ ANTI-ÉCRASEMENT DES PAGES --- */
+    .hero-container, 
+    .about-container, 
+    .contact-container,
+    .form-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+        box-sizing: border-box !important;
+    }
+}
+/* --- STYLE MOBILE POUR LA SECTION "QUI SUIS-JE" --- */
+    .about-container {
+        display: flex !important;
+        flex-direction: column !important; /* Le texte d'abord, la photo en dessous */
+        align-items: center !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+
+    .about-text {
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    .about-profile {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    /* Le réglage parfait pour ton portrait sur téléphone */
+    img.responsive-avatar {
+        width: 250px !important;      /* Largeur idéale pour un portrait sur mobile */
+        height: 250px !important;     /* Hauteur identique pour un carré parfait */
+        object-fit: cover !important; /* Coupe proprement l'image sans JAMAIS l'écraser */
+        border-radius: 50% !important;/* Optionnel : met ta photo dans un joli cercle pro */
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+    }
+    /* --- LE STYLE DU BOUTON BURGER SUR MOBILE --- */
+    .burger-menu {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1000;
+    }
+
+    /* Les 3 barres horizontales */
+    .burger-menu span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-dark-teal); /* Utilise la couleur de tes titres */
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    /* ==========================================================================
+   AJUSTEMENTS FINAUX : LOGO, BACKGROUND ET ESPACEMENT MOBILE
+   ========================================================================== */
+
+/* 1. CACHE LE LOGO AU SCROLL (Fonctionne sur PC et Mobile) */
+.site-header.scrolled #site-logo {
+    display: none !important;
+}
+
+/* 2. RÈGLAGE DE LA PHOTO DE FOND (HERO) */
+#hero {
+    background-image: url('images/votre-image-boulangerie.jpg');
+    background-size: cover;          /* L'image prend tout l'espace sans se déformer */
+    background-position: center;     /* L'image reste bien centrée */
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;               /* Force la section à faire toute la hauteur de l'écran */
+}
+
+/* 3. CORRECTIONS SPÉCIFIQUES POUR LE MOBILE (Écrans de téléphone) */
+@media (max-width: 768px) {
+    
+    /* Repousse le contenu vers le bas pour afficher "la note" sans qu'elle soit cachée sous le logo */
+    #hero {
+        padding-top: 140px !important; 
+    }
+}
+/* ==========================================================================
+   AJUSTEMENTS FINAUX : LOGO, BACKGROUND ET ESPACEMENT MOBILE
+   ========================================================================== */
+
+/* 1. CACHE LE LOGO AU SCROLL (Fonctionne sur PC et Mobile) */
+.site-header.scrolled #site-logo {
+    display: none !important;
+}
+
+/* 2. RÈGLAGE DE LA PHOTO DE FOND (HERO) */
+#hero {
+    background-image: url('images/votre-photo-de-fond.jpg');
+    background-size: cover;          /* L'image prend tout l'espace sans se déformer */
+    background-position: center;     /* L'image reste bien centrée */
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;               /* Force la section à faire toute la hauteur de l'écran */
+}
+
+/* 3. CORRECTIONS SPÉCIFIQUES POUR LE MOBILE (Écrans de téléphone) */
+@media (max-width: 768px) {
+    
+    /* Repousse le contenu vers le bas pour afficher "la note" sans qu'elle soit cachée sous le logo */
+    #hero {
+        padding-top: 140px !important; 
+    }
+}
+}
