@@ -679,4 +679,10 @@ img.responsive-avatar {
 .faq-item.visible {
     opacity: 1 !important;
     transform: translateX(0) !important;
+    
+    /* Code de secours pour forcer l'affichage sur GitHub si le JS buggue */
+.about-text, .about-profile, .service-row, .did-you-know-box, .faq-item {
+    opacity: 1 !important;
+    transform: none !important;
+}
 }
