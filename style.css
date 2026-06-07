@@ -506,103 +506,92 @@ img.responsive-avatar {
     }
 }
 /* 6. SECTION FAQ  */
-.faq-section {
-    padding: 100px 0;
+faq-section {
+    padding: 80px 0;
     background-color: var(--color-white) !important;
 }
 
-/* Le conteneur qui aligne tes questions */
+/* On force la FAQ à rester bien centrée et pas trop large */
 .faq-container {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espace entre chaque question */
+    gap: 16px; /* Espace entre chaque bloc */
 }
 
-/* Le design de chaque ligne (la boîte) */
-.faq-item {
-    background-color: var(--color-off-white);
-    border-radius: 16px;
-    padding: 24px 30px;
-    border: 1px solid rgba(12, 67, 83, 0.05);
-    cursor: pointer;
+/* On stylise la boîte globale de chaque question */
+details.faq-item {
+    background-color: var(--color-off-white) !important;
+    border-radius: 16px !important;
+    padding: 20px 24px !important;
+    border: 1px solid rgba(12, 67, 83, 0.08) !important;
     transition: all 0.3s ease;
-    
-    /* On garde notre animation au scroll de tout à l'heure */
-    opacity: 0; 
+    display: block; /* Force le comportement en bloc */
 }
 
-/* Petit effet au survol pour montrer que c'est cliquable */
-.faq-item:hover {
-    border-color: var(--color-accent-green);
-    transform: translateY(-2px);
+/* Effet sympa quand on passe la souris */
+details.faq-item:hover {
+    border-color: var(--color-accent-green) !important;
+    background-color: var(--color-white) !important;
+    box-shadow: 0 10px 25px rgba(12, 67, 83, 0.04);
 }
 
-/* La ligne du titre (Question + Flèche) */
-.faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+/* Le titre (La question sur laquelle on clique) */
+summary.faq-question {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    list-style: none !important; /* Cache la flèche noire moche de base */
+    outline: none;
 }
 
-.faq-question h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: var(--color-dark-teal);
-    font-weight: 700;
+/* Cache la flèche noire sur les navigateurs Safari/Chrome */
+summary.faq-question::-webkit-details-marker {
+    display: none !important;
 }
 
-/* Style de la petite flèche */
+/* Le texte de ta question */
+summary.faq-question h4 {
+    margin: 0 !important;
+    font-size: 1.15rem !important;
+    color: var(--color-dark-teal) !important;
+    font-weight: 700 !important;
+    border: none !important; /* Supprime la bordure bizarre autour du texte */
+    padding: 0 !important;
+}
+
+/* Notre jolie petite flèche verte */
 .faq-arrow {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--color-accent-green);
     transition: transform 0.3s ease;
 }
 
-/* --- LE SYSTÈME D'OUVERTURE --- */
-
-/* La réponse cachée par défaut */
+/* La réponse qui apparaît en dessous */
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+    padding-top: 15px !important;
+    border-top: 1px solid rgba(12, 67, 83, 0.05);
+    margin-top: 15px;
 }
 
 .faq-answer p {
-    margin: 0;
-    color: #4a5568;
-    line-height: 1.6;
-    font-size: 1.05rem;
+    margin: 0 !important;
+    color: #4a5568 !important;
+    line-height: 1.6 !important;
+    font-size: 1.05rem !important;
 }
 
-/* Quand on clique et que la classe .open s'ajoute */
-.faq-item.open {
-    background-color: var(--color-white);
-    box-shadow: 0 15px 35px rgba(12, 67, 83, 0.04);
-    border-color: rgba(28, 181, 210, 0.2);
+/* --- LOGIQUE D'OUVERTURE --- */
+/* Quand le bloc est ouvert [open], on fait tourner la flèche */
+details.faq-item[open] .faq-arrow {
+    transform: rotate(180deg);
 }
-
-.faq-item.open .faq-answer {
-    max-height: 300px; /* Laisse de la place pour le texte */
-    opacity: 1;
-    padding-top: 15px; /* Espace entre le titre et le texte */
-}
-
-.faq-item.open .faq-arrow {
-    transform: rotate(180deg); /* La flèche se tourne vers le haut */
-}
-
-
-/* --- INTEGRATION DES ANIMATIONS AU SCROLL RE-SECURISÉES --- */
-.faq-item:nth-child(odd) { transform: translateX(-30px); }
-.faq-item:nth-child(even) { transform: translateX(30px); }
-
-.faq-item.visible {
-    opacity: 1 !important;
-    transform: translateX(0) !important;
+details.faq-item[open] {
+    background-color: var(--color-white) !important;
+    border-color: rgba(28, 181, 210, 0.3) !important;
+    box-shadow: 0 12px 30px rgba(12, 67, 83, 0.05);
 }
 /* ==========================================================================
    7. FORMULAIRE DE CONTACT & FOOTER
