@@ -506,29 +506,103 @@ img.responsive-avatar {
     }
 }
 /* 6. SECTION FAQ  */
+.faq-section {
+    padding: 100px 0;
+    background-color: var(--color-white) !important;
+}
+
+/* Le conteneur qui aligne tes questions */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espace entre chaque question */
+}
+
+/* Le design de chaque ligne (la boîte) */
 .faq-item {
+    background-color: var(--color-off-white);
+    border-radius: 16px;
+    padding: 24px 30px;
+    border: 1px solid rgba(12, 67, 83, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    /* On garde notre animation au scroll de tout à l'heure */
+    opacity: 0; 
+}
+
+/* Petit effet au survol pour montrer que c'est cliquable */
+.faq-item:hover {
+    border-color: var(--color-accent-green);
+    transform: translateY(-2px);
+}
+
+/* La ligne du titre (Question + Flèche) */
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.faq-question h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--color-dark-teal);
+    font-weight: 700;
+}
+
+/* Style de la petite flèche */
+.faq-arrow {
+    font-size: 0.9rem;
+    color: var(--color-accent-green);
+    transition: transform 0.3s ease;
+}
+
+/* --- LE SYSTÈME D'OUVERTURE --- */
+
+/* La réponse cachée par défaut */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
 }
 
-/* L'alternance gauche / droite */
-.faq-item:nth-child(odd) { 
-    transform: translateX(-30px); 
-}
-.faq-item:nth-child(even) { 
-    transform: translateX(30px); 
+.faq-answer p {
+    margin: 0;
+    color: #4a5568;
+    line-height: 1.6;
+    font-size: 1.05rem;
 }
 
-/* Quand l'élément devient visible, on annule COMPLÈTEMENT le transform */
+/* Quand on clique et que la classe .open s'ajoute */
+.faq-item.open {
+    background-color: var(--color-white);
+    box-shadow: 0 15px 35px rgba(12, 67, 83, 0.04);
+    border-color: rgba(28, 181, 210, 0.2);
+}
+
+.faq-item.open .faq-answer {
+    max-height: 300px; /* Laisse de la place pour le texte */
+    opacity: 1;
+    padding-top: 15px; /* Espace entre le titre et le texte */
+}
+
+.faq-item.open .faq-arrow {
+    transform: rotate(180deg); /* La flèche se tourne vers le haut */
+}
+
+
+/* --- INTEGRATION DES ANIMATIONS AU SCROLL RE-SECURISÉES --- */
+.faq-item:nth-child(odd) { transform: translateX(-30px); }
+.faq-item:nth-child(even) { transform: translateX(30px); }
+
 .faq-item.visible {
     opacity: 1 !important;
     transform: translateX(0) !important;
-}
-
-/* SÉCURITÉ : On s'assure que le contenu masqué de la FAQ reste géré uniquement 
-   par ton système de déroulé d'origine et qu'aucune animation ne force son affichage */
-.faq-item .faq-answer {
-    transform: none !important; 
 }
 /* ==========================================================================
    7. FORMULAIRE DE CONTACT & FOOTER
