@@ -505,72 +505,31 @@ img.responsive-avatar {
         height: 360px;
     }
 }
-/* ==========================================================================
-   6. SECTION FAQ (Accordéons fluides)
-   ========================================================================== */
-.faq {
-    background-color: var(--color-off-white);
-}
-
-.faq-accordion {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
+/* 6. SECTION FAQ  */
 .faq-item {
-    background-color: var(--color-white) !important;
-    border: 1px solid rgba(12, 67, 83, 0.1) !important;
-    margin-bottom: 15px;
-    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.faq-question {
-    width: 100%;
-    background: none;
-    border: none;
-    padding: 22px 28px;
-    text-align: left;
-    font-family: inherit;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--color-dark-teal);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* L'alternance gauche / droite */
+.faq-item:nth-child(odd) { 
+    transform: translateX(-30px); 
+}
+.faq-item:nth-child(even) { 
+    transform: translateX(30px); 
 }
 
-.faq-question::after {
-    content: '+';
-    font-size: 1.4rem;
-    color: var(--color-accent-teal);
-    transition: transform 0.3s ease;
+/* Quand l'élément devient visible, on annule COMPLÈTEMENT le transform */
+.faq-item.visible {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
 }
 
-.faq-item.active {
-    border-color: var(--color-accent-teal);
-    box-shadow: 0 10px 25px rgba(12, 67, 83, 0.04);
+/* SÉCURITÉ : On s'assure que le contenu masqué de la FAQ reste géré uniquement 
+   par ton système de déroulé d'origine et qu'aucune animation ne force son affichage */
+.faq-item .faq-answer {
+    transform: none !important; 
 }
-
-.faq-item.active .faq-question::after {
-    transform: rotate(45deg);
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.faq-answer p {
-    padding: 0 24px 20px 24px !important;
-    margin: 0;
-}
-
-
 /* ==========================================================================
    7. FORMULAIRE DE CONTACT & FOOTER
    ========================================================================== */
