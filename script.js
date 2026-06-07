@@ -17,19 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     elementsToAnimate.forEach(el => {
         animObserver.observe(el);
     });
-    Ah ! C'est pour ça que rien ne s'ouvre ! Si tu n'as plus le code JavaScript qui gère le clic et l'affichage des réponses, tes boutons de la FAQ sont comme des interrupteurs coupés : tu as beau cliquer dessus, il ne se passe rien.
 
-On va réécrire ensemble ce script de clic pour qu'il redonne vie à tes menus déroulants, tout en cohabitant parfaitement avec notre animation au scroll.
-
-Ouvre ton fichier .js et colle ce code à la suite de celui qu'on a mis pour l'animation (juste avant la toute dernière accolade fermante, ou tout à la fin de ton fichier) :
-
-JavaScript
 // ==========================================================================
 // CODE POUR FAIRE FONCTIONNER LE CLIC DE LA FAQ
 // ==========================================================================
 
-// 1. On cherche tous les boutons ou les questions cliquables de la FAQ
-// (Ajuste '.faq-question' si ta classe HTML porte un autre nom, comme .faq-toggle)
+
 const faqQuestions = document.querySelectorAll('.faq-question');
 
 faqQuestions.forEach(question => {
